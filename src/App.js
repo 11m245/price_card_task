@@ -6,7 +6,7 @@ function App() {
 
   const free = { name: "free", price: 0, features: [{ status: "enabled", feature: "Single User" }, { status: "enabled", feature: "5GB Storage" }, { status: "enabled", status: "enabled", feature: "Unlimited Public Projects" }, { status: "enabled", feature: "Community Access" }, { status: "disabled", feature: "Unlimited Private Projects" }, { status: "disabled", feature: "Dedicated Phone Support" }, { status: "disabled", feature: "Free Subdomain" }, { status: "disabled", feature: "Monthly Status Reports" }] };
   const plus = { name: "plus", price: 9, features: [{ status: "enabled", feature: "5 Users" }, { status: "enabled", feature: "5GB Storage" }, { status: "enabled", status: "enabled", feature: "Unlimited Public Projects" }, { status: "enabled", feature: "Community Access" }, { status: "enabled", feature: "Unlimited Private Projects" }, { status: "enabled", feature: "Dedicated Phone Support" }, { status: "enabled", feature: "Free Subdomain" }, { status: "disabled", feature: "Monthly Status Reports" }] };
-  const pro = { name: "pro", price: 49, features: [{ status: "enabled", feature: "Unlimited Users" }, { status: "enabled", feature: "5GB Storage" }, { status: "enabled", status: "enabled", feature: "Unlimited Public Projects" }, { status: "enabled", feature: "Community Access" }, { status: "enabled", feature: "Unlimited Private Projects" }, { status: "enabled", feature: "Dedicated Phone Support" }, { status: "enabled", feature: "Unlimited Free Subdomain" }, { status: "enabled", feature: "Monthly Status Reports" }] };;
+  const pro = { name: "pro", price: 49, features: [{ status: "enabled", feature: "Unlimited Users" }, { status: "enabled", feature: "5GB Storage" }, { status: "enabled", status: "enabled", feature: "Unlimited Public Projects" }, { status: "enabled", feature: "Community Access" }, { status: "enabled", feature: "Unlimited Private Projects" }, { status: "enabled", feature: "Dedicated Phone Support" }, { status: "enabled", feature: "Unlimited Free Subdomains" }, { status: "enabled", feature: "Monthly Status Reports" }] };;
   const cards = [free, plus, pro];
 
   return (
@@ -50,10 +50,25 @@ function Feature({ status, option_name, index }) {
 
   console.log(status, option_name);
 
+  const renderFeatureName = () => {
+    switch (option_name) {
+      case "5 Users":
+      case "Unlimited Users":
+        return <p style={{ ...option_text_style, fontWeight: "bold" }} className='option-name'>{option_name}</p>
+      case "Unlimited Free Subdomains":
+        return <p style={option_text_style} className='option-name'>
+          <b>Unlimited</b> Free Subdomains
+        </p>
+      default:
+        return <p style={option_text_style} className='option-name'>{option_name}</p>
+    }
+  }
+
   return (
     <div key={index} className="option-wrapper">
       <img style={option_image_style} className='option-image' src={image_url} alt="" />
-      <p style={option_text_style} className='option-name'>{option_name}</p>
+      {renderFeatureName()}
+      {/* <p style={option_text_style} className='option-name'>{option_name}</p> */}
     </div>
   );
 }
