@@ -11,17 +11,13 @@ function App() {
 
   return (
     <div className="price-cards-wrapper">
-
       {cards.map((variant, index) => (<Card key={index} variant={variant} />))}
-      {/* <Card variant={free} />
-      <Card variant={plus} />
-      <Card variant={pro} /> */}
     </div>
   );
 }
 
 function Card({ variant, index }) {
-  console.log(variant);
+  // console.log(variant);
   let { name, price, features } = variant;
 
   return (
@@ -48,7 +44,7 @@ function Feature({ status, option_name, index }) {
   const option_image_style = (status === "disabled") ? disabled_image_style : null;
   const option_text_style = (status === "disabled") ? disabled_text_style : null;
 
-  console.log(status, option_name);
+  // console.log(status, option_name);
 
   const renderFeatureName = () => {
     switch (option_name) {
